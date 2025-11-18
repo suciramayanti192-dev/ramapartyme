@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PT RAMAPARTYME</title>
+
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+  <!-- Font Awesome untuk ikon -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <!-- Google Fonts: Montserrat -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Custom CSS -->
+  <style>
+    :root {
+      --merah: #D91E18;
+      --putih: #FFFFFF;
+      --abu: #f8f9fa;
+      --hitam: #212529;
+      --merah-muda: #ffe6e6;
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background-color: var(--putih);
+      color: var(--hitam);
+    }
+
+    /* Navbar */
+    .navbar {
+      background: var(--merah);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    .navbar-brand {
+      font-weight: 800;
+      font-size: 1.5rem;
+      color: var(--putih) !important;
+    }
+    .navbar-brand span {
+      color: #ffcccc;
+    }
+    .nav-link {
+      color: var(--putih) !important;
+      font-weight: 500;
+      margin: 0 10px;
+    }
+    .nav-link:hover {
+      color: #ffcccc !important;
+    }
+
+    /* Hero */
+    .hero {
+      background: linear-gradient(rgba(217,30,24,0.85), rgba(217,30,24,0.9)), url('https://source.unsplash.com/random/1600x900/?indonesia,business') no-repeat center center/cover;
+      color: var(--putih);
+      padding: 120px 0;
+      text-align: center;
+    }
+    .hero h1 {
+      font-size: 3.2rem;
+      font-weight: 800;
+      text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+    }
+    .hero p {
+      font-size: 1.2rem;
+      max-width: 750px;
+      margin: 20px auto;
+    }
+
+    /* Section Title */
+    .section-title {
+      position: relative;
+      display: inline-block;
+      font-weight: 700;
+      color: var(--merah);
+      margin-bottom: 3rem;
+    }
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 4px;
+      background: var(--merah);
+      border-radius: 2px;
+    }
+
+    /* Layanan */
+    .service-card {
+      background: var(--putih);
+      border-radius: 15px;
+      padding: 30px 20px;
+      text-align: center;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+      transition: all 0.3s;
+      height: 100%;
+    }
+    .service-card:hover {
+      transform: translateY(-12px);
+      box-shadow: 0 15px 30px rgba(217,30,24,0.15);
+    }
+    .service-icon {
+      font-size: 2.8rem;
+      color: var(--merah);
+      margin-bottom: 20px;
+    }
+
+    /* Tentang Kami */
+    .about-img {
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    }
+
+    /* Galeri Proyek */
+    .gallery-item {
+      position: relative;
+      overflow: hidden;
+      border-radius: 12px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+    .gallery-item img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      transition: transform 0.5s;
+    }
+    .gallery-item:hover img {
+      transform: scale(1.1);
+    }
+    .gallery-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(transparent, rgba(217,30,24,0.9));
+      color: white;
+      padding: 30px 15px 15px;
+      transform: translateY(20px);
+      opacity: 0;
+      transition: all 0.4s;
+    }
+    .gallery-item:hover .gallery-overlay {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    /* Tim */
+    .team-card {
+      text-align: center;
+      padding: 20px;
+    }
+    .team-img {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 5px solid var(--merah);
+      margin: 0 auto 15px;
+    }
+
+    /* Kontak */
+    .contact-info {
+      background: var(--merah-muda);
+      padding: 25px;
+      border-radius: 12px;
+    }
+
+    /* Footer */
+    .footer {
+      background: var(--merah);
+      color: var(--putih);
+      padding: 50px 0 20px;
+    }
+    .footer a {
+      color: #ffcccc;
+      text-decoration: none;
+    }
+    .footer a:hover {
+      color: white;
+    }
+    .footer .social-icons a {
+      font-size: 1.5rem;
+      margin: 0 10px;
+      transition: 0.3s;
+    }
+    .footer .social-icons a:hover {
+      transform: translateY(-3px);
+    }
+
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 2.3rem; }
+      .hero { padding: 80px 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="#">PT <span>RAMAPARTYME</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="#beranda">Beranda</a></li>
+          <li class="nav-item"><a class="nav-link" href="#tentang">Tentang</a></li>
+          <li class="nav-item"><a class="nav-link" href="#layanan">Layanan</a></li>
+          <li class="nav-item"><a class="nav-link" href="#galeri">Galeri</a></li>
+          <li class="nav-item"><a class="nav-link" href="#tim">Tim</a></li>
+          <li class="nav-item"><a class="nav-link" href="#kontak">Kontak</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section id="beranda" class="hero">
+    <div class="container">
+      <h1>PT RAMAPARTYME</h1>
+      <p class="lead">selamat datang di PT RAMAPARTYME</p>
+      <a href="#kontak" class="btn btn-light btn-lg">Hubungi Kami</a>
+      <a href="#layanan" class="btn btn-outline-light btn-lg ms-2">Lihat Layanan</a>
+    </div>
+  </section>
+
+  <!-- Tentang Kami -->
+  <section id="tentang" class="py-5">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-6">
+          <h2 class="section-title">Tentang Kami</h2>
+          <p class="lead">Didirikan pada tahun 2010, <strong>PT RAMAPARTYME adalah perusahaan yang berdedikasi untuk menghadirkan pengalaman acara yang tak terlupakan melalui pelayanan profesional,inovatif,dan penuh semangat</p>
+          <p>Kami mengedepankan nilai-nilai <strong>Pancasila</strong> dalam setiap layanan: profesional, jujur, dan berorientasi pada kemajuan bangsa.</p>
+          <ul class="list-unstyled">
+            <li class="mb-2"><i class="fas fa-check text-danger me-2"></i> 500+ Proyek Selesai</li>
+            <li class="mb-2"><i class="fas fa-check text-danger me-2"></i> 34 Provinsi Terlayani</li>
+            <li class="mb-2"><i class="fas fa-check text-danger me-2"></i> Sertifikasi ISO 9001:2015</li>
+          </ul>
+          <a href="#" class="btn btn-danger">Selengkapnya</a>
+        </div>
+        <div class="col-lg-6 text-center">
+          <img src="https://source.unsplash.com/random/600x500/?indonesia,company" class="img-fluid about-img" alt="Tentang Kami">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Layanan -->
+  <section id="layanan" class="py-5 bg-light">
+    <div class="container">
+      <h2 class="section-title text-center">Layanan Kami</h2>
+      <div class="row g-4">
+        <div class="col-md-6 col-lg-4">
+          <div class="service-card">
+            <div class="service-icon"><i class="fas fa-building"></i></div>
+            <h5>Layanan konsultasi</h5>
+            <p>kami menawarkan layanan konsultasi untuk membantu perusahaan anda meningkatkan kinerja dan mencapai tujuan</p>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+          <div class="service-card">
+            <div class="service-icon"><i class="fas fa-cogs"></i></div>
+            <h5>layanan pengembangan </h5>
+            <p>kami membantu perusahaan anda mengembangakan strategi dan rencana bisnis yang efektif</p>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+          <div class="service-card">
+            <div class="service-icon"><i class="fas fa-truck"></i></div>
+            <h5>Layanan pelatihan</h5>
+            <p>kami menawarkan pelatihan dan mengembangkan keterampilan untuk tim anda</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Galeri Proyek -->
+  <section id="galeri" class="py-5">
+    <div class="container">
+      <h2 class="section-title text-center">Galeri Proyek</h2>
+      <div class="row g-4">
+        <div class="col-md-6 col-lg-4">
+          <div class="gallery-item">
+            <img src="event1.jpg" alt="Proyek 1">
+            <div class="gallery-overlay">
+              <h6>EVENT MANAGEMENT/SOLUSI HIBURAN</h6>
+              <small>2024</small>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+          <div class="gallery-item">
+            <img src="event2.jpg" alt="Proyek 2">
+            <div class="gallery-overlay">
+              <h6>JAWA BARAT,GARUT</h6>
+              <small>2023</small>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+          <div class="gallery-item">
+            <img src="event4.jpg" alt="Proyek 3">
+            <div class="gallery-overlay">
+              <h6>Kantor Pusat Garut</h6>
+              <small>2022</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tim -->
+  <section id="tim" class="py-5 bg-light">
+    <div class="container">
+      <h2 class="section-title text-center">Tim Kami</h2>
+      <div class="row g-4">
+        <div class="col-md-6 col-lg-3">
+          <div class="team-card">
+            <img src="suci.jpg" class="team-img" alt="CEO">
+            <h6>SUCI RAMAYANTI</h6>
+            <p class="text-muted">CEO & Founder</p>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+          <div class="team-card">
+            <img src="amel.jpg" class="team-img" alt="COO">
+            <h6>amel pebriani</h6>
+            <p class="text-muted">Chief Operating Officer</p>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+          <div class="team-card">
+            <img src="selvia.jpg" class="team-img"alt="CTO">
+            <h6>selvya nabila putri</h6>
+            <p class="text-muted">Chief Technology Officer</p>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+          <div class="team-card">
+            <img src="ayu.jpg" class="team-img" alt="CMO">
+            <h6>rahma ayu</h6>
+            <p class="text-muted">Chief Marketing Officer</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Kontak -->
+  <section id="kontak" class="py-5">
+    <div class="container">
+      <h2 class="section-title text-center">Hubungi Kami</h2>
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="contact-info">
+            <h5><i class="fas fa-map-marker-alt text-danger me-2"></i> Alamat</h5>
+            <p>KAB Garut Leuwigoong ,Jawa Barat ID.44192</p>
+
+            <h5 class="mt-4"><i class="fas fa-phone text-danger me-2"></i> Telepon</h5>
+            <p>(057)14237361</p>
+
+            <h5 class="mt-4"><i class="fas fa-envelope text-danger me-2"></i> Email</h5>
+            <p>infoRAMAPARTYME@gmail.com</p>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <form>
+            <div class="mb-3">
+              <input type="text" class="form-control" placeholder="Nama Lengkap" required>
+            </div>
+            <div class="mb-3">
+              <input type="email" class="form-control" placeholder="Email" required>
+            </div>
+            <div class="mb-3">
+              <textarea class="form-control" rows="4" placeholder="Pesan Anda" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-danger w-100">Kirim Pesan</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <h5>PT RAMAPARTYME</h5>
+          <p>Membangun masa depan Indonesia dengan solusi berkualitas dan semangat nasionalisme.</p>
+        </div>
+        <div class="col-md-6 text-md-end">
+          <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+      </div>
+      <hr class="bg-light">
+      <div class="text-center">
+        <small>&copy; 2025 RAMAPARTYME All rights reserved.</small>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap 5 JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
